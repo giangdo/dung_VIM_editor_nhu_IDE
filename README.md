@@ -1,7 +1,7 @@
 # cach_su_dung_vim
 Hướng dẫn sử dung vim như là IDE để code c/c++
 
-![alt tag](https://raw.githubusercontent.com/giangdo/cach_su_dung_vim/master/vim_as_ide_for_cpp.png)
+![alt tag](https://raw.githubusercontent.com/giangdo/dung_VIM_editor_nhu_IDE/master/vim_as_ide_for_cpp.png)
 
 VIM là trình sọan văn bản/mã nguồn cực kì mạnh mẽ mà bất cứ người lập trình nào cũng nên học và sử dụng.
 
