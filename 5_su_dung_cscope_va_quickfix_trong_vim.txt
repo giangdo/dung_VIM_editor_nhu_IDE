@@ -1,0 +1,80 @@
+* Tạo cơ sở dữ liệu và khởi động cscope trong vim:
+
+   + Ví dụ ta có dự án opensaf (/home/giang/opensaf)
+      - Bước 1: tạo 1 file (cscope.files) chứa danh sách tất cả các file c/c++ của dự án:
+                các file này có đuôi: .c, .h, .cc, .cxx, .hxx, .cpp, .hpp
+
+         $cd /home/giang
+         $find /home/giang/opensaf -regex ".*\.[ch]\(c\)?\(pp\)?\(xx\)?" > cscope.files
+
+      - Bước 2: tạo cơ sở dữ liệu cho cscope: cscope.out
+         $cscope -q -R -b -i cscope.files
+
+      - Bước 3: thêm cơ sở dữ liệu này vào cscope trong vim:
+         :cscope add /home/giang/cscope.out
+         
+      - Bước 4: thiết lập cách cscope kết hợp với quickfix:
+         :set cscopequickfix=s-!,g-!,c-!,t-!,e-!,f-!,i-,d-!
+
+      - Bước 5: thiết lập để tìm định nghĩa của một hàm/macro bằng cscope thay vì ctags:
+         :set csto=0
+
+      - Bước 6: khởi động cscope trong vim:
+         . khởi động cscope tìm kiếm theo kiểu phân biệt chữ thường chữ hoa:
+            :set csprg=/usr/bin/cscope
+            :cs reset
+         . khởi động cscope tìm kiếm theo kiểu không phân biệt chữ thường chữ hoa:
+            :set csprg=/home/giang/.vim/ignoreCaseCscope.sh
+            :cs reset
+            
+         . Chú ý do ta không có cách nào thay đổi cách tìm kiếm có phân biệt chữ hoa chữ thường hay không sau khi cscope program đã được chạy nên ta phải sử dụng cách trên.
+           Nội dung của ignoreCaseCscope.sh là:
+           
+           #!/bin/sh
+           cscope -C "$@"
+
+         . Chiêu này học đuợc từ Bob Harris:
+            "
+             I have 2 ideas.
+             :help cscope
+             says
+             :cs add {file|dir} [pre-path] [flags]
+             So you should be able to include -C in the [flags] field
+             :cs add cscope.out /some/path/src -C
+             And if that doesn't work, then write a script to invoke cscope
+             with the -C option
+             #!/bin/sh
+             cscope -C "$@"
+             And set the csprg variable to point to your script
+             :set csprg=/path/to/your/cscope.sh
+             Bob Harris 
+            "
+* Sử dụng  cscope:
+   + ví dụ ta muốn tìm file có chữ "amf" trong tên file:
+      :cs find f amf
+      :cw
+      -> ta sẽ thấy 1 danh sách các file chứa chữ "amf" trong quick fix list, chọn file ta thật sự muốn nhảy tới và nhấn enter
+   + EX: nếu muốn tìm tất cả những file có tên theo dạng "amf_ab", "amf1ab" or "amf21ab" ->ta có thể sử dụng regular expression (hay còn gọi là regex): 
+      :cs find f amf.*ab
+         
+   + EX: nếu muốn tìm một chuỗi ký tự trong nội dung tất cả các file trong cơ sở dữ liệu của cscope và sử dụng regular expression : 
+      :cs find e log_no.*connected
+
+   + nếu muốn tìm kiếm bằng regex thì tốt nhất là ta khởi động cscope trong chế độ phân biệt chữ hoa chữ thường.
+
+   + không sử dụng dấu ngoặc kép để bao chuỗi như trong grep/find command khi tìm chuỗi bằng cscope.
+   EX: nếu ta muốn tìm chữ "abc" thì dùng ":cs find e abc" chứ không dùng ":cs find e "abc“”
+   + tìm định nghĩa của một hàm/macro:
+      di chuyển con trỏ đến hàm muốn tìm -> nhấn Ctrl + [
+
+* Ngoài ra để tiện sử dụng trong vim ta sử dụng phím nóng bắt đầu bằng Ctrl + space để gọi các tính năng của cscope
+   -> đưa những dòng sau vào .vimrc (chú ý rằng đối với một số hệ thông để biểu thị tổ hợp phím "Ctrl + khỏang trắng" ta chỉ có thể dùng <C-Space> hoặc <C-@>)
+   nmap <C-@>s :cs find s <C-R>=expand("<cword>")<CR><CR>   
+   nmap <C-@>g :cs find g <C-R>=expand("<cword>")<CR><CR>   
+   nmap <C-@>c :cs find c <C-R>=expand("<cword>")<CR><CR>
+   nmap <C-@>t :cs find t <C-R>=expand("<cword>")<CR><CR>   
+   nmap <C-@>e :cs find e <C-R>=expand("<cword>")<CR><CR>
+   nmap <C-@>f :cs find f <C-R>=expand("<cfile>")<CR><CR>   
+   nmap <C-@>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+   nmap <C-@>d :cs find d <C-R>=expand("<cword>")<CR><CR>   
+      

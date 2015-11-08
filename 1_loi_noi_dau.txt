@@ -1,0 +1,17 @@
+Bạn là lập trình viên nên công việc của bạn gắn liền với việc viết, đọc hiểu và tìm kiếm code.
+
+Những công việc này lặp đi lặp lại trong suốt sự nghiệp lập trình của bạn vì vậy bạn nên tìm kiếm một công cụ hỗ trợ tốt nhất để hỗ trợ cho bạn. 
+
+Hai công cụ mà những lập trình viên giỏi nhất thế giới thường sử dụng là EMAC và VIM.
+
+Học EMAC hay VIM cần thời gian nhiều hơn so với việc học những công cụ khác (Source Insight, Eclipse, Visual Studio, Notepad++...).
+Nhưng một khi bạn học được, bạn sẽ cảm thấy rất thích thú, thoải mái và hiệu quả hơn rất rất nhiều lần.
+
+Bộ tài liệu này sẽ không đi theo hướng từ cơ bản đến phức tạp như nhiều tài liệu khác.
+Bởi vì dường như các tính năng cơ bản thường không đủ hấp dẫn để khuyến khích bạn tiếp tục học VIM tới mức nâng cao.
+
+Trước tiên, tài liệu sẽ hướng dẫn bạn cấu hình và cài đặt VIM thành môi trường gần như hòan hảo cho việc lập trình dự án C/C++.
+Sau đó sẽ giúp bạn sử dụng từng tính năng của nó cho việc lập trình C/C++ nó một cách hiệu quả nhất.
+
+Học VIM sẽ tốn khỏang 3 tháng cho người đã có thể gõ máy tính bằng 10 ngón tay, và sẽ tốn 6 tháng cho người chưa biết gõ 10 ngón tay.
+Nhưng yên tâm là bạn sẽ nhận được quả ngọt sau khoảng thời gian vất vả đó :D. 

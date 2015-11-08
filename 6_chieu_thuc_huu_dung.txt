@@ -1,0 +1,69 @@
+* Cách chép chuỗi văn bản từ Vim ra default clipboard của x11:
+	+ Chọn khối bằng visual mode sau đó gõ dấu nháy kép, dấu cộng rồi y thường:
+		"+y
+	+ Hoặc chọn khối bằng visual mode sau đó Ctrl+Insert sau đó nhấn y thường:
+		<C-Insert>y
+
+	+ Để dán nội dung trong default clipboard của X11:
+		Sử dụng chuột phải chọn paste
+
+* Cách chép chuỗi văn bản từ Vim ra primary selection clipboard của X11:
+	+ Dùng hotkey:
+		- Chọn khối bằng visual mode sau đó gõ dấu nháy kép, dấu sao rồi y thường:
+			"*y
+		
+		- Để dán nội dung trong default clipboard của X11:
+			Sử dụng hot key Shift + Insert
+
+	+ Dùng chuột:
+		- Dùng chuột trái để chọn văn bản muốn sao chép
+		- Dùng chuột giữa để dán nội dung trrong primary clipboard
+
+* Phân biệt các loại clipboard trong X11:
+	Tham khảo: 	http://vi.stackexchange.com/questions/84/how-can-i-copy-text-to-the-system-clipboard-from-vim
+					http://unix.stackexchange.com/questions/11889/pasting-x-selection-not-clipboard-contents-with-keyboard
+					http://superuser.com/questions/421463/why-does-ctrl-v-not-paste-in-bash-linux-shell
+
+	+ default clipboard hay còn gọi là cut clipboard:
+		- Để cắt một chuỗi vào clipboard này:
+			. Dùng hotkey:
+				Trong vim: "+y
+				Trong tmux: dùng copy mode với điều kiện là có thêm dòng sau vào .tmux.conf và có cài đặt xclip
+								bind -t vi-copy y copy-pipe "xclip -sel clipboard -i"
+				Trong firefox hoặc mouse pad: Ctrl + Insert hoặc Ctrl + C 
+			. Dùng chuột: (dùng cho mọi chương trình)
+				Chọn chuỗi bằng chuột trái, sau đó nhấn phím phải chuột, Chọn copy
+
+		- Để dán nội dung từ clipboard này:
+			. Dùng hotkey:
+				Trong vim: "+p
+				Trong xfce terminal: Shift + Ctrl + Insert hoặc Shift + Ctrl + V (Shift + Insert ko sử dụng được trong trường hợp này)
+				Trong firefox hoặc mouse pad: Shift + Insert (Shift + Ctrl + Insert ko sử dụng được)
+				-> Hotkey trong 2 trường hợp không giống nhau dẫn tới sự khó chịu cho người dùng
+			. Dùng chuột: (dùng cho mọi chương trình)
+				Phím phải chuột, chọn paste
+
+	+ Primary selection clipboard:
+		- Để cắt một chuỗi vào clipboard này:
+			. Dùng hotkey:
+				Trong vim: "*y
+				Trong tmux: dùng copy mode với điều kiện là có thêm dòng sau vào .tmux.conf và có cài đặt xclip
+								bind -t vi-copy y copy-pipe "xclip -selection primary -i"
+				Trong firefox hoặc mousepad: ko dùng hotkey được
+			. Dùng chuột: (cho mọi chương trình)
+				Chỉ cần chọn chuỗi bằng chuột trái
+
+		- Để dán nội dung từ clipboard này:
+			. Dùng hotkey:
+				Trong vim: "*p
+			 	Trong xfce terminal: Shift + Insert
+				Trong firefox hoặc mouse pad: ko dùng hotkey được
+				-> Hotkey trong 2 trường hợp lại một lần nữa ko giống nhau, một bên có hotkey, một bên ko!
+			. Dùng chuột: (dùng cho mọi chương trình)
+				Nhấn phím giữa chuột.
+
+	+ Kết luận: Việc phân chia thành 2 clipboard trong linux gây ra rất nhiều khó chịu cho người dùng vì hotkey để tương tác với 2 clipboard này ko giống nhau cho mọi chương trình. Vậy nên cách tốt nhất là sử dụng chương trình để đồng bộ 2 clipboard này một cách tự động để chỉ cần sử dụng một hotkey Shift + Insert mà thôi.
+		- Sử dụng lệnh autocutsel để đồng bộ giữa default clipboard và primary clipboard:
+		  Thêm 2 dòng sau vào file ~/.profile
+				autocutsel -fork
+				autocutsel -selection PRIMARY -fork

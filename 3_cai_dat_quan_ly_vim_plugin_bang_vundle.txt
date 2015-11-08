@@ -1,0 +1,35 @@
+* Tham khảo:
+https://github.com/gmarik/Vundle.vim
+
+* Bằng cách cài đặt plugin, VIM sẽ trở nên rất mạnh mẽ và hữu ích.
+
+* Có nhiều cách để cài đặt plugin cho VIM.
+   - Cách dễ nhất là chép plugin vào thẳng thư mục ~/.vim/plugin
+   - Nhưng cách trên không gíup cho ta quản lý các plugin đã cài đặt một cách rõ ràng và hiệu quả, cách tốt nhất là dùng plugin Vundle để quản lý tất cả các plugin khác trong VIM
+
+* Có rất nhiều plugin cho VIM nhưng đối với lập trình viên C/C++ thì nên sử dụng những plugin sau: 
+   + cscope_maps.vim
+   + ctrlp.vim
+   + mark.vim
+   + NERD_tree.vim
+   + Tabular.vim
+   + taglist.vim
+   + toggle_maximize.vim
+
+* Ngoài ra, ta cũng cài đặt 2 chương trình đi kèm với VIM cho code C/C++ là:
+   + cscope
+   + ctags
+
+   $sudo apt-get install cscope ctags
+
+
+* Cài đặt git:
+   $sudo apt-get install git
+
+* Lưu ý: để cài đặt những plugin ko có trên github thì mình nên tự tạo một git reposity trong máy của mình và chép những plugin đó vào git reposity đó.
+
+* Để xóa một plugin được quản lý bởi vundle ta phải xóa 2 chỗ:
+   + Xóa thư mục chứa plugin đó.
+      $rm -rf ~/.vim/bundle/tabular
+   + Xóa dòng plugin trong .vimrc file
+   
