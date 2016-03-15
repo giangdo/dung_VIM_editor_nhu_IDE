@@ -75,6 +75,12 @@ Plugin 'vim-scripts/diffchar.vim'
 "Plugin to help write fish script
 Plugin 'dag/vim-fish'
 
+"Plugin to help Highlighting qml resource file syntax"
+Plugin 'peterhoeg/vim-qml'
+
+"Plugin for motions based on indent depths or levels"
+Plugin 'jeetsukumaran/vim-indentwise'
+
 " all plugins that are not appear in github, should appear in your git repo"
 " And we need to commit add plugins in that local git repo before run
 " VundleInstall
@@ -493,6 +499,7 @@ set wildignore=*.swp,*.bak,*.pyc,*.class
 set title                " change the terminal's title
 set nobackup
 set noswapfile
+set nowritebackup
 "set list
 "set listchars=tab:>.,trail:.,extends:#,nbsp:.
 set backspace=indent,eol,start
