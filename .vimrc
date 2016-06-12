@@ -23,6 +23,9 @@ Plugin 'tisyang/taglist'
 "To use the_silver_searcher (ag)
 Plugin 'rking/ag.vim'
 
+"To do ag search in normal mode"
+Plugin 'chun-yang/vim-action-ag'
+
 "Solarized color
 Plugin 'altercation/vim-colors-solarized.git'
 
@@ -78,8 +81,11 @@ Plugin 'dag/vim-fish'
 "Plugin to help Highlighting qml resource file syntax"
 Plugin 'peterhoeg/vim-qml'
 
-"Plugin for motions based on indent depths or levels"
+"Plugin for motions based on indent depths or levels it is really good for browsing python or html source code"
 Plugin 'jeetsukumaran/vim-indentwise'
+
+"Plugin for see man page in vim:
+Plugin 'nhooyr/neoman.vim'
 
 " all plugins that are not appear in github, should appear in your git repo"
 " And we need to commit add plugins in that local git repo before run
