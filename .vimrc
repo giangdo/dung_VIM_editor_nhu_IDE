@@ -87,6 +87,9 @@ Plugin 'jeetsukumaran/vim-indentwise'
 "Plugin for see man page in vim:
 Plugin 'nhooyr/neoman.vim'
 
+"Plugin to show tabnumber in tabline -> jump between tab by "number+gt" easily
+Plugin 'mkitt/tabline.vim'
+
 " all plugins that are not appear in github, should appear in your git repo"
 " And we need to commit add plugins in that local git repo before run
 " VundleInstall
@@ -531,3 +534,11 @@ let g:loaded_matchparen=1
 
 "Map key to know fullpath of current file
 nmap <C-g> :echo expand('%:p')<CR>
+
+"Setup color for tabline:
+hi TabLine      ctermfg=White  ctermbg=Green     cterm=NONE
+hi TabLineFill  ctermfg=Black  ctermbg=Green     cterm=NONE
+hi TabLineSel   ctermfg=White  ctermbg=DarkBlue  cterm=NONE
+
+"Setup hotkey to turn of highlighting until the next-search
+nmap <silent> <Leader>e :noh<CR>
