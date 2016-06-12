@@ -279,6 +279,8 @@ function! SettingQF()
    setlocal statusline=%t%{w:quickfix_title}%=%l/%L(%p%%)-%c
    "setup default heigh of quickfix window
    7wincmd _
+   "setup default position of quickfix window is the most bottom window.
+   wincmd J
 endfunction
 "mapkey to scroll through last 10 quickfix list 
 nmap <C-@>n :cnewer<CR>
