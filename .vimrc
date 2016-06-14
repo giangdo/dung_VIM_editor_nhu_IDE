@@ -542,3 +542,23 @@ hi TabLineSel   ctermfg=White  ctermbg=DarkBlue  cterm=NONE
 
 "Setup hotkey to turn of highlighting until the next-search
 nmap <silent> <Leader>e :noh<CR>
+
+"Set up to not include "include files" when do autocomplete:
+set complete-=i
+
+"Set up base of vim sensible https://github.com/tpope/vim-sensible
+set nrformats-=octal
+set ttimeout
+set ttimeoutlen=100
+if &shell =~# 'fish$'
+	set shell=/bin/bash
+endif
+if &history < 1000
+	set history=1000
+endif
+if &tabpagemax < 50
+	set tabpagemax=50
+endif
+
+"Set up for case-insensive filename completion
+set wildignorecase
